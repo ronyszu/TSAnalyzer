@@ -1,0 +1,16 @@
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\bin\Debug\netcoreapp5.0\Accord.dll.config
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\bin\Debug\netcoreapp5.0\Interfaces.deps.json
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\bin\Debug\netcoreapp5.0\Interfaces.runtimeconfig.json
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\bin\Debug\netcoreapp5.0\Interfaces.runtimeconfig.dev.json
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\bin\Debug\netcoreapp5.0\Interfaces.dll
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\bin\Debug\netcoreapp5.0\ref\Interfaces.dll
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\bin\Debug\netcoreapp5.0\Interfaces.pdb
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\Interfaces.AssemblyInfoInputs.cache
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\Interfaces.AssemblyInfo.cs
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\Interfaces.csproj.CoreCompileInputs.cache
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\Interfaces.dll
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\ref\Interfaces.dll
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\Interfaces.pdb
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\Interfaces.genruntimeconfig.cache
+C:\Users\ronys\source\repos\TSAnalyzer\Interfaces\obj\Debug\netcoreapp5.0\Interfaces.csprojAssemblyReference.cache
