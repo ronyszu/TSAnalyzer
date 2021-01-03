@@ -7,9 +7,12 @@ using Microsoft.AspNetCore.Mvc;
 using RDotNet;
 using Accord.Statistics;
 using Accord.IO;
+using Microsoft.AspNetCore.Cors;
+using Newtonsoft.Json;
 
 namespace TSAnalyzer.Controllers
 {
+    [EnableCors("RonysPolicy")]  
     [Route("api/[controller]")]
     [ApiController]
     public class ParameterController : RestfulControllerBase<Parameter>
@@ -33,32 +36,89 @@ namespace TSAnalyzer.Controllers
 
 
         [HttpPost("getMeanSDandVarAccord")]
-        public ActionResult<List<double>> getMeanSDandVarAccord([FromBody] string va)
+        public ActionResult<Dictionary<string, double>> getMeanSDandVarAccord([FromBody] object va)
         {
+            //receive any type of object from the UI and deserialize it
 
 
-            double[] values = new double[2];
+            //try {  fazer if que checa se input é json 
+            //    Type type = va.GetType();
 
-            values.Append(1);
+            //    type.Name is "JsonElement";
 
-            values.Append(3);
+
+            //}
+            //catch (Exception e)
+            //{
+
+            //    //input not formatted as JSON; return message alerting that
+            //}
+
+            List<TSData> listEntries = JsonConvert.DeserializeObject<List<TSData>>(va.ToString());
+
+            //select just the Time series values
+            List<Double> listValues = listEntries.Select(x => x.Value).ToList();
+
+
+            double[] values = listValues.ToArray();
+
+            //proceed to calculations
 
             double sd = Measures.StandardDeviation(values);
 
             double mean = Measures.Mean(values);
 
-            double var = Measures.Variance(values);
+            double mode = Measures.Mode(values);
+
+            double median = Measures.Median(values);
+
+            double skewness = Measures.Skewness(values);
+
+            double kurtosis = Measures.Kurtosis(values);
+
+            double variance = Measures.Variance(values);
+
+            double lowerQuartile = Measures.LowerQuartile(values);
+
+            double upperQuartile = Measures.UpperQuartile(values);
+
+            //double geometricMean = Measures.GeometricMean(values);
 
 
 
 
-            List<double> result = new List<double>();
 
-            result.Add(sd);
-            result.Add(mean);
-            result.Add(var);
+            //return result as dictionary
 
-            return result;
+
+            Dictionary<string, double> resultDict = new Dictionary<string, double>()
+            {
+                {"Mean",mean},
+                {"Mode",mode},
+                {"Median",median},
+                {"Standard Deviation",sd},
+                {"Variance",variance},
+                {"Skewness",skewness},
+                {"Kurtosis",kurtosis},
+                {"Lower Quartile",lowerQuartile},
+                {"Upper Quartile",upperQuartile},
+                //{"Geometric Mean",geometricMean},
+
+
+
+            };
+
+            //return result as array of lists
+            //List<string> names = new List<string>(){"Mean","Mode",...};
+
+            //List<double> resultList = new List<double>(){mean,mode,median,...};
+
+            //Object[] resultArray = new object[] { names, resultList };
+
+            //return resultArray;
+
+
+            return resultDict;
         }
 
 
