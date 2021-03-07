@@ -35,26 +35,11 @@ namespace TSAnalyzer.Controllers
         }
 
 
-        [HttpPost("getMeanSDandVarAccord")]
-        public ActionResult<Dictionary<string, double>> getMeanSDandVarAccord([FromBody] object va)
+        [HttpPost("accordCalculation")]
+        public ActionResult<Dictionary<string, double>> accordCalculation([FromBody] object data)
         {
-            //receive any type of object from the UI and deserialize it
-
-
-            //try {  fazer if que checa se input é json 
-            //    Type type = va.GetType();
-
-            //    type.Name is "JsonElement";
-
-
-            //}
-            //catch (Exception e)
-            //{
-
-            //    //input not formatted as JSON; return message alerting that
-            //}
-
-            List<TSData> listEntries = JsonConvert.DeserializeObject<List<TSData>>(va.ToString());
+           
+            List<TSData> listEntries = JsonConvert.DeserializeObject<List<TSData>>(data.ToString());
 
             //select just the Time series values
             List<Double> listValues = listEntries.Select(x => x.Value).ToList();
@@ -82,11 +67,6 @@ namespace TSAnalyzer.Controllers
 
             double upperQuartile = Measures.UpperQuartile(values);
 
-            //double geometricMean = Measures.GeometricMean(values);
-
-
-
-
 
             //return result as dictionary
 
@@ -102,20 +82,10 @@ namespace TSAnalyzer.Controllers
                 {"Kurtosis",kurtosis},
                 {"Lower Quartile",lowerQuartile},
                 {"Upper Quartile",upperQuartile},
-                //{"Geometric Mean",geometricMean},
 
 
 
             };
-
-            //return result as array of lists
-            //List<string> names = new List<string>(){"Mean","Mode",...};
-
-            //List<double> resultList = new List<double>(){mean,mode,median,...};
-
-            //Object[] resultArray = new object[] { names, resultList };
-
-            //return resultArray;
 
 
             return resultDict;
